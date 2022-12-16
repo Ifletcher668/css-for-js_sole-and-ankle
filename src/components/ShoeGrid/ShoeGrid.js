@@ -1,19 +1,30 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import SHOES from '../../data';
-import ShoeCard from '../ShoeCard';
+import SHOES from "../../data";
+import ShoeCard from "../ShoeCard";
 
-const ShoeGrid = () => {
+const ShoeGrid = (props) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       {SHOES.map((shoe) => (
-        <ShoeCard key={shoe.slug} {...shoe} />
+        <ShoeWrapper key={shoe.slug}>
+          <ShoeCard {...shoe} />
+        </ShoeWrapper>
       ))}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+`;
+
+const ShoeWrapper = styled.div`
+  /* control ShoeCard styles here to avoid coupling ShoeCard to ShoeGrid */
+  flex: 1 1 340px;
+`;
 
 export default ShoeGrid;
