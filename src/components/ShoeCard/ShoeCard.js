@@ -20,11 +20,6 @@ const styles = {
     "--banner-color": COLORS.white,
     "--banner-display": "block",
   },
-  default: {
-    "--text-decoration": "none",
-    "--show-sale-price": "none",
-    "--banner-display": "none",
-  },
 };
 
 const ShoeCard = ({
@@ -94,9 +89,9 @@ const Banner = styled.div`
   padding: 8px;
   border-radius: 2px;
   font-weight: ${WEIGHTS.bold};
+  display: var(--banner-display, none);
   background-color: var(--banner-background-color);
   color: var(--banner-color);
-  display: var(--banner-display);
 `;
 
 const ImageWrapper = styled.div`
@@ -130,13 +125,13 @@ const PriceWrapper = styled.div`
 `;
 
 const Price = styled.span`
-  text-decoration: var(--text-decoration);
+  text-decoration: var(--text-decoration, none);
 `;
 
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
-  display: var(--show-sale-price);
+  display: var(--show-sale-price, none);
 `;
 
 export default ShoeCard;
